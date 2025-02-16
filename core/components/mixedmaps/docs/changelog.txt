@@ -1,0 +1,5 @@
+Changelog for mEmoji
+
+1.0.0-beta
+==============
+- Initial relize
