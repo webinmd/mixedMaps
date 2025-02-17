@@ -1,9 +1,5 @@
 <div id="tv-input-properties-form{$tv}"></div>
 {literal}
-<style></style>
-<div class="mixedmapsInfo">
-    {/literal}{include file="$options_desc_tpl"}{literal}
-</div>
 
 <script type="text/javascript">
     // <![CDATA[
@@ -30,15 +26,15 @@
                     , items: [{
                         xtype: 'textfield',
                         fieldLabel: _('mixedmaps_map_center'),
-                        name: 'map_center',
+                        name: 'inopt_map_center',
                         id: 'map_center{/literal}{$tv}{literal}',
                         value: params['map_center'] || '',
                         anchors: '98%',
                         listeners: oc
-                    }{
+                    }, {
                         xtype: 'textfield',
                         fieldLabel: _('mixedmaps_map_zoom'),
-                        name: 'map_zoom',
+                        name: 'inopt_map_zoom',
                         id: 'map_zoom{/literal}{$tv}{literal}',
                         value: params['map_zoom'] || 9,
                         anchors: '98%',
