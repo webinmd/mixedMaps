@@ -1,8 +1,6 @@
 <div id="tv-input-properties-form{$tv}"></div>
 {literal}
-<style>
-   
-</style>
+<style></style>
 <div class="mixedmapsInfo">
     {/literal}{include file="$options_desc_tpl"}{literal}
 </div>
@@ -22,13 +20,6 @@
             };
             var oc = { 'change': { fn: function () { Ext.getCmp('modx-panel-tv').markDirty(); }, scope: this } };
 
-            {/literal}
-                MixedMapsLex = {$tveulex};
-                function __(key) {
-                    return MixedMapsLex[key];
-                };
-                {literal}
-
                 MODx.load({
                     xtype: 'panel'
                     , layout: 'form'
@@ -38,10 +29,18 @@
                     , labelAlign: 'top'
                     , items: [{
                         xtype: 'textfield',
-                        fieldLabel: __('mixedmaps_map_center'),
+                        fieldLabel: _('mixedmaps_map_center'),
                         name: 'map_center',
                         id: 'map_center{/literal}{$tv}{literal}',
                         value: params['map_center'] || '',
+                        anchors: '98%',
+                        listeners: oc
+                    }{
+                        xtype: 'textfield',
+                        fieldLabel: _('mixedmaps_map_zoom'),
+                        name: 'map_zoom',
+                        id: 'map_zoom{/literal}{$tv}{literal}',
+                        value: params['map_zoom'] || 9,
                         anchors: '98%',
                         listeners: oc
                     }]

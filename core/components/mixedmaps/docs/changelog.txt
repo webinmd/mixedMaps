@@ -1,4 +1,4 @@
-Changelog for mEmoji
+Changelog for mixedMaps
 
 1.0.0-beta
 ==============
