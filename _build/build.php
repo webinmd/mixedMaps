@@ -760,10 +760,10 @@ class mixedMapsPackage
 }
 
 /** @var array $config */
-if (!file_exists(dirname(__FILE__) . '/config.inc.php')) {
+if (!file_exists(dirname(__FILE__) . '/config.php')) {
     exit('Could not load MODX config. Please specify correct MODX_CORE_PATH constant in config file!');
 }
-$config = require(dirname(__FILE__) . '/config.inc.php');
+$config = require(dirname(__FILE__) . '/config.php');
 $install = new mixedMapsPackage(MODX_CORE_PATH, $config);
 $builder = $install->process();
 
