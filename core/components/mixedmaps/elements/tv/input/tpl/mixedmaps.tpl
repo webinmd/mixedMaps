@@ -1,9 +1,10 @@
-<input type="hidden" id="tv{$tv->id}" name="tv{$tv->id}" value="{$tv->value|escape}" /> 
-<div id="mixedmaps{$tv->id}" class="mixedmaps"></div>
-
 <div class="mixedmaps__wrapper">
     <div class="mixedmaps__map">
-        <div id="mixedmaps{$tv->id}" class="mixedmaps__map__inner"></div>
+        <div id="mixedmaps{$tv->id}" class="mixedmaps__map__inner" 
+        data-mixedmaps-center="{if $tv->get('value')}{$tv->get('value')|escape}{else}{$params.map_center}{/if}"
+        data-mixedmaps-zoom="{$params.map_zoom}"
+        data-mixedmaps-tv="tv{$tv->id}"
+        ></div>
     </div>
     <input
             id="tv{$tv->id}"
@@ -22,7 +23,7 @@
     // <![CDATA[
 	{literal}
 	Ext.onReady(function () {
-		mixedmaps{$tv->id} = MODx.load{literal}({
+		mixedmaps{/literal}{$tv->id}{literal} = MODx.load({
 			{/literal}
 			xtype: 'textfield'
 			, applyTo: 'tv{$tv->id}'
@@ -31,8 +32,8 @@
 			, listeners: {'keydown': {fn: MODx.fireResourceFormChange, scope: this}}
 		});
 
-		Ext.getCmp('modx-panel-resource').getForm().add(mixedmaps{$tv->id});
-		MODx.makeDroppable(fld);
+		Ext.getCmp('modx-panel-resource').getForm().add(mixedmaps{/literal}{$tv->id}{literal});
+		MODx.makeDroppable(mixedmaps{/literal}{$tv->id}{literal});
     });
     {/literal}
     // ]]>
