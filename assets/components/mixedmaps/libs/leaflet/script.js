@@ -9,11 +9,21 @@ Ext.onReady(function () {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
+        let markersGroup = L.layerGroup();
+        map.addLayer(markersGroup);
+
         map.on('click', function(e){
-            document.getElementById(tv).value = e.latlng.toString();
+            markersGroup.clearLayers();
+
+            L.marker(e.latlng).addTo(markersGroup);
+            setTvValue(tv, e.latlng.lat + ',' + e.latlng.lng);
         });
 
         return map;
+    }
+
+    function setTvValue(tv, value) {
+        document.getElementById(tv).value = value;
     }
 
 

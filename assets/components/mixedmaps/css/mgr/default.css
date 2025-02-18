@@ -6,6 +6,11 @@ input[name="inopt_map_center"] {
 
 
 /* mixedmaps tv render */
+.mixedmaps__wrapper,
+.mixedmaps__map {
+    width: 100%;
+}
+
 .mixedmaps__map__inner {
     position: relative;
     overflow: hidden;
