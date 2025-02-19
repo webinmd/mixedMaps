@@ -4,19 +4,11 @@
         data-mixedmaps-center="{if $tv->get('value')}{$tv->get('value')|escape}{else}{$params.map_center}{/if}"
         data-mixedmaps-zoom="{$params.map_zoom}"
         data-mixedmaps-tv="tv{$tv->id}"
+        {if $tv->get('value')}data-mixedmaps-current="{$tv->get('value')|escape}"{/if}
         ></div>
     </div>
-    <input
-            id="tv{$tv->id}"
-            name="tv{$tv->id}"
-            class="mixedmaps__input"
-            type="text"
-            value="{$tv->get('value')|escape}"
-            {$style}
-            tvtype="{$tv->type}"
-    />
+    <input type="text" id="tv{$tv->id}" name="tv{$tv->id}" class="mixedmaps__input" value="{$tv->get('value')|escape}" tvtype="{$tv->type}"/>
 </div>
-
 
 <script type="text/javascript">
  
@@ -28,6 +20,7 @@
 			xtype: 'textfield'
 			, applyTo: 'tv{$tv->id}'
 			, enableKeyEvents: true
+            , anchor: '98%'
 			{literal}
 			, listeners: {'keydown': {fn: MODx.fireResourceFormChange, scope: this}}
 		});

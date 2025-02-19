@@ -6,6 +6,11 @@ input[name="inopt_map_center"] {
 
 
 /* mixedmaps tv render */
+.mixedmaps__wrapper{
+    position: relative;
+    z-index: 2;
+}
+
 .mixedmaps__wrapper,
 .mixedmaps__map {
     width: 100%;
