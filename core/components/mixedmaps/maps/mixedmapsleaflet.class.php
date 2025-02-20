@@ -23,9 +23,13 @@ class mixedmapsLeaflet
         $this->config = array_merge([
             'js' => [
                 $assetsUrl . 'libs/leaflet/leaflet.js',
+                $assetsUrl . 'libs/autocomplete/autocomplete.min.js',
                 $assetsUrl . 'libs/leaflet/script.js'
             ],
-            'css' => [$assetsUrl . 'libs/leaflet/leaflet.css'],
+            'css' => [
+                $assetsUrl . 'libs/leaflet/leaflet.css',
+                $assetsUrl . 'libs/autocomplete/autocomplete.min.css'
+            ],
         ], $config);
 
         return $this->config;

@@ -19,18 +19,109 @@ Ext.onReady(function () {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
+        const customIcon = L.icon({
+            iconUrl: '/assets/components/mixedmaps/images/mgr/marker-icon.png',
+            shadowUrl: '/assets/components/mixedmaps/images/mgr/marker-shadow.png',
+
+            iconSize: [40, 40], // size of the icon
+            shadowSize: [41, 41], // size of the shadow
+            iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
+            shadowAnchor: [-7, 0],  // the same for the shadow
+            popupAnchor:  [10, 0]
+        });
+
+
         let markersGroup = L.layerGroup();
         map.addLayer(markersGroup);
 
-        if(params.current) {
-            L.marker(center).addTo(markersGroup);
+        if (params.current) {
+            L.marker(center, { icon: customIcon }).addTo(markersGroup);
         }
 
-        map.on('click', function(e){
+        map.on('click', function (e) {
             markersGroup.clearLayers();
 
-            L.marker(e.latlng).addTo(markersGroup);
+            L.marker(e.latlng, { icon: customIcon }).addTo(markersGroup);
             setTvValue(params.tv, e.latlng.lat + ',' + e.latlng.lng);
+        });
+
+ 
+        // Autocomplete
+        new Autocomplete(mapId + "-search", {
+            delay: 1000,
+            selectFirst: true,
+            howManyCharacters: 2,
+
+            onSearch: function ({ currentValue }) {
+                const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&q=${encodeURI(
+                    currentValue
+                )}`;
+
+                /**
+                 * Promise
+                 */
+                return new Promise((resolve) => {
+                    fetch(api)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            resolve(data.features);
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                });
+            },
+            // nominatim
+            onResults: ({ currentValue, matches, template }) => {
+                const regex = new RegExp(currentValue, "i");
+                // checking if we have results if we don't
+                // take data from the noResults method
+                return matches === 0
+                    ? template
+                    : matches
+                        .map((element) => {
+                            return `
+                <li class="loupe" role="option">
+                    ${element.properties.display_name.replace(
+                                regex,
+                                (str) => `<b>${str}</b>`
+                            )}
+                </li> `;
+                        })
+                        .join("");
+            },
+
+            onSubmit: ({ object }) => {
+                const { display_name } = object.properties;
+                const cord = object.geometry.coordinates;
+                // custom id for marker
+                const customId = Math.random();
+
+                const marker = L.marker([cord[1], cord[0]], {
+                    title: display_name,
+                    id: customId,
+                    icon: customIcon
+                });
+
+                markersGroup.clearLayers();
+                marker.addTo(markersGroup).bindPopup(display_name);
+                map.setView([cord[1], cord[0]], 13);
+
+                map.eachLayer(function (layer) {
+                    if (layer.options && layer.options.pane === "markerPane") {
+                        if (layer.options.id !== customId) {
+                            map.removeLayer(layer);
+                        }
+                    }
+                });
+            },
+
+            onSelectedItem: ({ index, element, object }) => {
+                //console.log("onSelectedItem:", index, element, object);
+            },
+
+            noResults: ({ currentValue, template }) =>
+                template(`<li>No results found: "${currentValue}"</li>`),
         });
 
         return map;
@@ -49,9 +140,9 @@ Ext.onReady(function () {
 
 
     const maps = document.querySelectorAll('.mixedmaps__map__inner');
-    if(maps) {
+    if (maps) {
         maps.forEach(map => {
-            const mapId = map.id; 
+            const mapId = map.id;
             const params = {
                 center: map.dataset.mixedmapsCenter,
                 zoom: map.dataset.mixedmapsZoom,
@@ -61,5 +152,6 @@ Ext.onReady(function () {
             initializeMap(mapId, params);
         });
     }
+
 
 });

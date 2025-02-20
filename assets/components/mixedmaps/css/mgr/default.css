@@ -4,16 +4,17 @@ input[name="inopt_map_center"] {
     max-width: 500px;
 }
 
-
 /* mixedmaps tv render */
-.mixedmaps__wrapper{
+.mixedmaps{
     position: relative;
     z-index: 2;
+    width: 800px;
+    max-width: 100%;
 }
-
-.mixedmaps__wrapper,
+ 
 .mixedmaps__map {
-    width: 100%;
+    width: 800px;
+    max-width: 100%
 }
 
 .mixedmaps__map__inner {
@@ -22,8 +23,47 @@ input[name="inopt_map_center"] {
     width: 100%;
     height: 500px;
     margin-bottom: 20px;
+    z-index: 2;
 }
 
 .mixedmaps__input {
+    width: 98.5%;
+    box-sizing: border-box;
     width: 100%;
+    padding: 15px 10px;
+}
+ 
+.mixedmaps-search {
+    width: 100%; 
+    margin: 0 0 5px;
+    padding: 15px 10px;
+    box-sizing: border-box;
+}
+
+.mixedmaps .auto-clear{
+    z-index: 4;
+    height: 33px;
+}
+
+.mixedmaps .auto-results-wrapper{ 
+    border-color: #E4E4E4;
+    border-radius: 3px;
+}
+
+.mixedmaps .auto-results-wrapper li{
+    padding: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.mixedmaps .auto-results-wrapper li.loupe:before{
+    top: 8px;
+}
+
+.mixedmaps .auto-is-loading::after {
+    top: 6px;
+}
+
+.mixedmaps .auto-results-wrapper.auto-is-active {
+    margin-top: -5px;
 }

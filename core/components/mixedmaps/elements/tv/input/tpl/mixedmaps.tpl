@@ -1,5 +1,6 @@
-<div class="mixedmaps__wrapper">
+<div class="mixedmaps">
     <div class="mixedmaps__map">
+        <input type="text" class="mixedmaps-search x-form-text x-form-field" id="mixedmaps{$tv->id}-search">
         <div id="mixedmaps{$tv->id}" class="mixedmaps__map__inner" 
         data-mixedmaps-center="{if $tv->get('value')}{$tv->get('value')|escape}{else}{$params.map_center}{/if}"
         data-mixedmaps-zoom="{$params.map_zoom}"
