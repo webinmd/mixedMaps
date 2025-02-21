@@ -25,9 +25,9 @@ Ext.onReady(function () {
 
             iconSize: [40, 40], // size of the icon
             shadowSize: [41, 41], // size of the shadow
-            iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
-            shadowAnchor: [-7, 0],  // the same for the shadow
-            popupAnchor:  [10, 0]
+            iconAnchor: [20, 30], // point of the icon which will correspond to marker's location
+            shadowAnchor: [13, 30],  // the same for the shadow
+            popupAnchor:  [1, -33]
         });
 
 
@@ -106,6 +106,7 @@ Ext.onReady(function () {
                 markersGroup.clearLayers();
                 marker.addTo(markersGroup).bindPopup(display_name);
                 map.setView([cord[1], cord[0]], 13);
+                setTvValue(params.tv, cord[1] + ',' + cord[0]);
 
                 map.eachLayer(function (layer) {
                     if (layer.options && layer.options.pane === "markerPane") {
