@@ -140,7 +140,7 @@ Ext.onReady(function () {
     }
 
 
-    const maps = document.querySelectorAll('.mixedmaps__map__inner');
+    const maps = document.getElementsByClassName('mixedmaps__map__inner');
     if (maps) {
         maps.forEach(map => {
             const mapId = map.id;

@@ -1,5 +1,5 @@
 Changelog for mixedMaps
 
-1.0.0-beta
+1.0.0-pl
 ==============
 - Initial relize

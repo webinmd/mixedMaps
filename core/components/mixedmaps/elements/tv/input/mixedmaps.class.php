@@ -10,11 +10,9 @@ if (!class_exists('MixedMapsInputRender')) {
 
         public function process($value, array $params = [])
         {
-
             $mapClass = $this->modx->getOption('mixemaps_map_class', null, 'mixedmapsLeaflet', true);
             require_once dirname(__FILE__, 4) . '/maps/' . strtolower($mapClass) . '.class.php';
             $map = new $mapClass($this->modx, $params);
-
             $map->loadMapLibrary();
         }
 
