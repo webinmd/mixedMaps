@@ -9,14 +9,7 @@ if (!class_exists('MixedMapsInputRender')) {
             return $this->modx->getOption('core_path') . 'components/mixedmaps/elements/tv/input/tpl/mixedmaps_' . strtolower($mapClass) . '.tpl';
         }
 
-        public function process($value, array $params = [])
-        {
-
-            $mapClass = $this->getActiveMapClass();
-            require_once dirname(__FILE__, 4) . '/maps/' . strtolower($mapClass) . '.class.php';
-            $map = new $mapClass($this->modx, $params);
-            $map->loadMapLibrary();
-        }
+        public function process($value, array $params = []) {}
 
 
         public function getLexiconTopics()
