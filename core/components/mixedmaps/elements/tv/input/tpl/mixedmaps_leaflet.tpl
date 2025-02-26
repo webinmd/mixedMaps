@@ -1,6 +1,6 @@
 <div class="mixedmaps">
     <div class="mixedmaps__map">
-        <input type="text" class="mixedmaps-search x-form-text x-form-field" id="mixedmaps{$tv->id}-search">
+        <input placeholder="Search address" type="text" class="mixedmaps-search x-form-text x-form-field" id="mixedmaps{$tv->id}-search">
         <div id="mixedmaps{$tv->id}" class="mixedmaps__map__inner" 
         data-mixedmaps-center="{if $tv->get('value')}{$tv->get('value')|escape}{else}{$params.map_center}{/if}"
         data-mixedmaps-zoom="{$params.map_zoom}"
@@ -8,8 +8,9 @@
         {if $tv->get('value')}data-mixedmaps-current="{$tv->get('value')|escape}"{/if}
         ></div>
     </div>
-    <input type="text" id="tv{$tv->id}" name="tv{$tv->id}" class="mixedmaps__input" value="{$tv->get('value')|escape}" tvtype="{$tv->type}"/>
+    <input type="text" placeholder="Coordinates" id="tv{$tv->id}" name="tv{$tv->id}" class="mixedmaps__input" value="{$tv->get('value')|escape}" tvtype="{$tv->type}"/>
 </div>
+
 
 <script type="text/javascript">
  
@@ -33,3 +34,7 @@
     // ]]>
 
 </script>
+
+<script src="/assets/components/mixedmaps/libs/leaflet/script.js" defer></script>
+ 
+ 

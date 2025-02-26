@@ -140,8 +140,8 @@ Ext.onReady(function () {
     }
 
 
-    const maps = document.getElementsByClassName('mixedmaps__map__inner');
-    if (maps) {
+    const maps = document.querySelectorAll('.mixedmaps__map__inner'); 
+    if (maps.length > 0) {
         maps.forEach(map => {
             const mapId = map.id;
             const params = {
@@ -153,6 +153,5 @@ Ext.onReady(function () {
             initializeMap(mapId, params);
         });
     }
-
-
+ 
 });

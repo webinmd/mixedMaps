@@ -1,6 +1,6 @@
 <?php
 
-class mixedmapsLeaflet
+class Leaflet
 {
 
     /** @var modX $modx */
@@ -23,8 +23,7 @@ class mixedmapsLeaflet
         $this->config = array_merge([
             'js' => [
                 $assetsUrl . 'libs/leaflet/leaflet.js',
-                $assetsUrl . 'libs/autocomplete/autocomplete.min.js',
-                $assetsUrl . 'libs/leaflet/script.js'
+                $assetsUrl . 'libs/autocomplete/autocomplete.min.js'
             ],
             'css' => [
                 $assetsUrl . 'libs/leaflet/leaflet.css',

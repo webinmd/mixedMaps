@@ -24,5 +24,11 @@ switch ($modx->event->name) {
         $modx->regClientStartupScript($assetsUrl . 'js/mgr/default.js');
         $modx->regClientCSS($assetsUrl . 'css/mgr/default.css');
         $modx->controller->addLexiconTopic('mixedmaps:default');
+
+        $mapClass = $modx->getOption('mixemaps_map_class', null, 'Leaflet', true);
+        require_once $corePath . '/maps/' . strtolower($mapClass) . '.class.php';
+        $map = new $mapClass($modx, []);
+        $map->loadMapLibrary();
+
         break;
 }

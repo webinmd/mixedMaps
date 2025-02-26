@@ -3,6 +3,6 @@
 return [
     'map_class' => [
         'xtype' => 'textfield',
-        'value' => 'mixedmapsLeaflet',
+        'value' => 'leaflet',
     ],
 ];
