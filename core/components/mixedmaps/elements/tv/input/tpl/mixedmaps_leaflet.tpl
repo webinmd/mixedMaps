@@ -35,6 +35,6 @@
 
 </script>
 
-<script src="/assets/components/mixedmaps/libs/leaflet/script.js" defer></script>
+<script src="/assets/components/mixedmaps/libs/leaflet/mgr.js" defer></script>
  
  

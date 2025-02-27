@@ -28,7 +28,7 @@ switch ($modx->event->name) {
         $mapClass = $modx->getOption('mixedmaps_map_class', null, 'Leaflet', true);
         require_once $corePath . '/maps/' . strtolower($mapClass) . '.class.php';
         $map = new $mapClass($modx, []);
-        $map->loadMapLibrary();
+        $map->loadCssJsMgr();
 
         break;
 }
