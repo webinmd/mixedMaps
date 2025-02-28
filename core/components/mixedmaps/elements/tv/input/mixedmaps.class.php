@@ -19,7 +19,7 @@ if (!class_exists('MixedMapsInputRender')) {
 
         private function getActiveMapClass()
         {
-            $mapClass = $this->modx->getOption('mixemaps_map_class', null, 'Leaflet', true);
+            $mapClass = $this->modx->getOption('mixedmaps_map_class', null, 'Leaflet', true);
             return $mapClass;
         }
     }

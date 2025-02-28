@@ -71,12 +71,21 @@ class Leaflet
     public function loadCssJsWeb()
     {
         // JS
-        foreach ($this->config['js'] as $js) {
+        $jsList = [
+            $this->config['assets'] . 'libs/leaflet/leaflet.js',
+            $this->config['assets'] . 'libs/leaflet/web.js'
+        ];
+
+        foreach ($jsList as $js) {
             $this->modx->regClientStartupScript($js);
         }
 
         // CSS
-        foreach ($this->config['css'] as $css) {
+        $cssList = [
+            $this->config['assets'] . 'libs/leaflet/leaflet.css',
+        ];
+
+        foreach ($cssList as $css) {
             $this->modx->regClientCSS($css);
         }
     }

@@ -3,9 +3,9 @@
 return [
     'mixedMaps' => [
         'file' => 'mixedmaps',
-        'description' => 'mixedMaps snippet to lrender map on frontend',
+        'description' => 'Snippet for rendering the map on the front',
         'properties' => [
-            'class' => [
+            'mapClass' => [
                 'type' => 'textfield',
                 'value' => 'Leaflet',
             ],
@@ -16,6 +16,10 @@ return [
             'mapId' => [
                 'type' => 'textfield',
                 'value' => 'map',
+            ],
+            'elementClass' => [
+                'type' => 'textfield',
+                'value' => 'mixedmaps',
             ],
         ],
     ],
