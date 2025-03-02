@@ -11,7 +11,6 @@
     <input type="text" placeholder="Coordinates" id="tv{$tv->id}" name="tv{$tv->id}" class="mixedmaps__input" value="{$tv->get('value')|escape}" tvtype="{$tv->type}"/>
 </div>
 
-
 <script type="text/javascript">
  
     // <![CDATA[
@@ -36,5 +35,4 @@
 </script>
 
 <script src="/assets/components/mixedmaps/libs/leaflet/mgr.js" defer></script>
- 
  

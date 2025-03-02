@@ -73,11 +73,10 @@ class Leaflet
         // JS
         $jsList = [
             $this->config['assets'] . 'libs/leaflet/leaflet.js',
-            $this->config['assets'] . 'libs/leaflet/web.js'
         ];
 
         foreach ($jsList as $js) {
-            $this->modx->regClientStartupScript($js);
+            $this->modx->regClientScript($js);
         }
 
         // CSS
