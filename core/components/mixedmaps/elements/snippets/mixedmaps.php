@@ -5,6 +5,7 @@ $coordinates = $modx->getOption('coordinates', $scriptProperties, false);
 $data = $modx->getOption('data', $scriptProperties, []);
 $mapCenter = $modx->getOption('mapCenter', $scriptProperties, false);
 $mapParams = $modx->getOption('mapParams', $scriptProperties, []);
+$mapCenterOffset = $modx->getOption('mapCenterOffset', $scriptProperties, false);
 $elementClass = $modx->getOption('elementClass', $scriptProperties, 'mixedmaps');
 $mapClass = $modx->getOption('mapClass', $scriptProperties, $modx->getOption('mixedmaps_map_class', null, 'Leaflet', true));
 $mapJs = $modx->getOption('mapJs', $scriptProperties, $modx->getOption('mixedmaps_frontend_js', null, '/assets/components/mixedmaps/libs/leaflet/web.js', true));
@@ -68,6 +69,15 @@ if ($data) {
 $params = array_merge([
     'zoom' => 12
 ], $mapParams);
+
+
+if ($mapCenterOffset) {
+    $mapOffset = explode(',', $mapCenterOffset);
+    $mapCenter = [
+        $mapCenter[0] + $mapOffset[0],
+        $mapCenter[1] + $mapOffset[1]
+    ];
+}
 
 
 // set config
